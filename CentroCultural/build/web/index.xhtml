@@ -2,14 +2,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Sistema Centro Cultural</title>
     </h:head>
     <h:body>
         <ui:composition template="paginaMestra.xhtml">
                 <ui:define name="conteudo">
-                    calendario
+                    <p:commandButton action = "#{paginacao.login}" value="Login"/>
                 </ui:define>
         </ui:composition>
     </h:body>

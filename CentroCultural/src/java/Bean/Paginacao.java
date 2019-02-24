@@ -29,5 +29,10 @@ public class Paginacao {
     public String evento(){
     return "evento";
     }
-    
+ 
+    //redirecionar pra pagina de login
+    //apenas para testes
+    public String login(){
+    return "login";
+    }
 }
