@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro de Locatários Jurídicos</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="paginaMestra.xhtml">
+            <ui:define name="conteudo">
+                <h:form>
+                    <p:panel header="Cadastro de Locatário Jurídico">
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="CNPJ: " />
+                            <p:inputMask 
+                                value="#{locatarioJuridicoBean.juridico.cnpj}"
+                                mask="99.999.999/9999-99" />
+                            <p:commandButton 
+                                action="#{locatarioJuridicoBean.salvarJuridico()}" 
+                                value="Salvar" 
+                                update="@form"
+                                             />
+                            <p:messages autoUpdate="true" closable="true"/>
+                        </p:panelGrid>    
+                    </p:panel>
+                    <p:panel header="Lista de Locatários Jurídicos">
+                        <p:dataTable 
+                            value="#{locatarioJuridicoBean.listaJuridico}"
+                            var="juridico"
+                            selectionMode="single"
+                            selection="#{locatarioJuridicoBean.juridicoSelecionado}"
+                            rowKey="#{juridico.idJuridico}"
+                            emptyMessage="Não existem locatarios cadastrados!"
+                            >
+                            <p:column headerText="IDJuridico">
+                                <p:outputLabel value="#{juridico.idJuridico}" />
+                            </p:column>
+                            <p:column headerText="CNPJ">
+                                <p:outputLabel value="#{juridico.cnpj}" />
+                            </p:column>
+                            <p:column headerText="Ações">
+                                <p:commandButton 
+                                    action="#{locatarioJuridicoBean.removerJuridico()}" 
+                                    update="@form"
+                                    value="Remover"
+                                    />
+                                <p:commandButton 
+                                    action="#{locatarioJuridicoBean.carregarJuridico()}" 
+                                    update="@form"
+                                    value="Alterar"
+                                    />
+                                <p:commandButton 
+                                    action="#{paginacao.locatario()}" 
+                                    update="@form"
+                                    value="Editar">
+                                <f:setPropertyActionListener 
+                                    value="#{locatarioJuridicoBean.juridicoSelecionado}"
+                                    target="#{locatarioBean.juridico}" 
+                                    />
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+                </h:form> 
+            </ui:define>
+        </ui:composition>
+        
+    </h:body>
+</html>
+

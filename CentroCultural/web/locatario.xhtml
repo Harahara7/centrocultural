@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Cadastro de Locatarios</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="paginaMestra.xhtml">
+            <ui:define name="conteudo">
+                <h:form>
+                    <p:panelGrid columns="2">
+                        <p:panel header="Cadastro de Locatario" toggleable="true" toggleOrientation="vertical">
+                            <p:panelGrid columns="1" >
+                                <h:selectOneRadio value="#{selectOneBox.selecao}">
+                                    <p:outputLabel value="Selecione tipo de pessoa: " />
+                                    <p:separator />
+                                    <f:selectItem itemValue="cpf" itemLabel="Física(CPF)" />
+                                    <f:selectItem itemValue="cnpj" itemLabel="Jurídica(CNPJ)" />
+                                    <f:ajax render="inputs" />
+                                </h:selectOneRadio>
+                            </p:panelGrid>
+                            <p:panelGrid columns="2" id="inputs">
+                                <p:outputLabel value="CPF: " />
+                                <p:inputMask value="#{locatarioBean.fisico.cpf}" disabled="#{selectOneBox.selecao == 'cnpj'}" mask="99999999999"/>
+                                <p:outputLabel value="CNPJ: " />
+                                <p:inputMask value="#{locatarioBean.juridico.cnpj}" disabled="#{selectOneBox.selecao == 'cpf'}" mask="99999999999999"/>
+                                <p:outputLabel value="Nome: " />
+                                <p:inputText value="#{locatarioBean.locatario.nome}" />
+                                <p:outputLabel value="Telefone: " />
+                                <p:inputMask value="#{locatarioBean.locatario.contato}" mask="(99)99999-9999"/>
+                                <p:outputLabel value="E-mail: " />
+                                <p:inputText value="#{locatarioBean.locatario.email}" />
+                                <p:outputLabel value="CEP: " />
+                                <p:inputMask readonly="true" value="#{locatarioBean.locatario.cep}" mask="99999999"/>
+                                <p:outputLabel value="Logradouro " />
+                                <p:inputText value="#{locatarioBean.locatario.logradouro}" />
+                                <p:outputLabel value="Bairro " />
+                                <p:inputText value="#{locatarioBean.locatario.bairro}" />
+                                <p:commandButton
+                                    update="@form"
+                                    action="#{locatarioBean.salvarLocatario()}"
+                                    value="Cadastrar"
+                                    />
+                                <p:messages autoUpdate="true" closable="true"/>
+                            </p:panelGrid>
+                        </p:panel>
+                            <p:panel header="Validar CEP" toggleable="true" toggleOrientation="vertical">
+                                <p:panelGrid columns="2">
+                                    <p:outputLabel value="CEP" />
+                                    <p:inputMask value="#{locatarioBean.cepWS.cepCampo}" mask="99999999"/> 
+                                    <p:commandButton 
+                                        value="Buscar/Validar" 
+                                        action="#{locatarioBean.carregarCep()}"
+                                        update="@form"
+                                        />
+                                </p:panelGrid>
+                            </p:panel>
+                    </p:panelGrid>    
+                    <p:panel header="Lista de Locatários">
+                        <p:dataTable
+                            widgetVar="tabela"
+                            paginator="true"
+                            rows="5"
+                            value="#{locatarioBean.listaLocatario}"
+                            var="locatario"
+                            selectionMode="single"
+                            selection="#{locatarioBean.locatarioSelecionado}"
+                            rowKey="#{locatario.idLocatario}"
+                            filteredValue="#{locatarioBean.listaLocatarioFiltrado}"
+                            emptyMessage="Não existem locatarios cadastrados!"
+                            >
+                                <f:facet name="header">
+                                    <p:outputPanel>    
+                                        <h:outputText value="Buscar: " />    
+                                        <p:inputText id="globalFilter" onkeyup="PF('tabela').filter()" />
+                                    </p:outputPanel>
+                                </f:facet>
+                            <p:column filterBy="#{locatario.idJuridico.cnpj}" filterMatchMode="contains" headerText="CNPJ">
+                                <p:outputLabel value="#{locatario.idJuridico.cnpj}" />
+                            </p:column>
+                            <p:column filterBy="#{locatario.idFisico.cpf}" filterMatchMode="contains" headerText="CPF">
+                                <p:outputLabel value="#{locatario.idFisico.cpf}" />
+                            </p:column>
+                            <p:column filterBy="#{locatario.nome}" filterMatchMode="contains" headerText="Nome / Razão Social">
+                                <p:outputLabel value="#{locatario.nome}" />
+                            </p:column>
+                            <p:column filterBy="#{locatario.contato}" filterMatchMode="contains" headerText="Telefone">
+                                <p:outputLabel value="#{locatario.contato}" />
+                            </p:column>
+                            <p:column filterBy="#{locatario.email}" filterMatchMode="contains" headerText="E-mail">
+                                <p:outputLabel value="#{locatario.email}" />
+                            </p:column>
+                            <p:column filterBy="#{locatario.cep}" filterMatchMode="contains" headerText="CEP">
+                                <p:outputLabel value="#{locatario.cep}" />
+                            </p:column>
+                            <p:column filterBy="#{locatario.logradouro}" filterMatchMode="contains" headerText="Logradouro">
+                                <p:outputLabel value="#{locatario.logradouro}" />
+                            </p:column>
+                            <p:column filterBy="#{locatario.bairro}" filterMatchMode="contains" headerText="Bairro">
+                                <p:outputLabel value="#{locatario.bairro}" />
+                            </p:column>
+                            <p:column headerText="Ações">
+                                <p:commandButton update="@form"
+                                                 value="Remover"
+                                                 action="#{locatarioBean.removerLocatario()}"
+                                                 />
+                                <p:commandButton update="@form"
+                                                 value="Alterar"
+                                                 action="#{locatarioBean.carregarLocatario()}"
+                                                 />
+                                <p:commandButton update="@form"
+                                                 value="Locação para Evento"
+                                                 action="#{paginacao.evento()}">
+                                    <f:setPropertyActionListener 
+                                        value="#{locatarioBean.locatarioSelecionado}"
+                                        target="#{eventoBean.locatario}" />
+                                </p:commandButton>
+                            </p:column>
+                        </p:dataTable>
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

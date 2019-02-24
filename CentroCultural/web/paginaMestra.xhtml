@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html">
+    <h:head>
+        <title>Sistema Centro Cultural</title>
+    </h:head>
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit position="west" 
+                          size="318"    
+                          resizable="false" 
+                          collapsible="false">
+                <p:panel header="Sistema Centro Cultural">
+                    <h:form>
+                    <p:menu>
+                        <p:submenu label="Locatário">
+                            <p:menuitem action="#{paginacao.locatario()}" value="Gerenciar Locatários"/>
+                        </p:submenu>
+                        <p:submenu label="Eventos">
+                            <p:menuitem action="#{paginacao.evento()}" value="Gerenciar Eventos" />
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+                </p:panel>
+            </p:layoutUnit>
+            <p:layoutUnit position="center">
+                <ui:insert name="conteudo"/>
+            </p:layoutUnit>
+        </p:layout>
+    </h:body>
+</html>
