@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/CentroCultural/web/locatario.xhtml</file>
-            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/CentroCultural/src/java/Bean/LocatarioBean.java</file>
-            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/CentroCultural/src/java/Bean/EventoBean.java</file>
-            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/CentroCultural/web/evento.xhtml</file>
+            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/centroculturalgit/CentroCultural/web/index.xhtml</file>
+            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/centroculturalgit/CentroCultural/src/java/Bean/Paginacao.java</file>
+            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/centroculturalgit/CentroCultural/web/locatario.xhtml</file>
+            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/centroculturalgit/CentroCultural/web/login.xhtml</file>
+            <file>file:/C:/Users/Yusuke/Documents/NetBeansProjects/centroculturalgit/CentroCultural/web/paginaMestra.xhtml</file>
         </group>
     </open-files>
 </project-private>
