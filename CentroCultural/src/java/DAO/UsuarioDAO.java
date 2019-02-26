@@ -2,15 +2,19 @@ package DAO;
 
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import modelo.Usuario;
+import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
 public class UsuarioDAO {
     
+           
       public void salvar(Usuario usuario){
-    
         //inicia uma sessão com conexão com BD
         Session s = HibernateUtil.getSessionFactory().openSession();
         //inicia um Transaction ao banco
@@ -67,4 +71,22 @@ public class UsuarioDAO {
         
     }//listarClientes
     
+    public Usuario buscarLogin(Usuario usuario) {
+        Usuario us = null;
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            String stmt = "FROM Usuario WHERE usuario = '" + usuario.getUsuario()
+                    + "' and senha = '" + usuario.getSenha() + "'";
+            Query query = s.createQuery(stmt);
+            if (!query.list().isEmpty()) {
+                us = (Usuario) query.list().get(0);
+            } else {
+            us = null;
+            }
+        } catch (HibernateException e) {
+            throw e;
+        }
+        return us;
+    }
+
 }

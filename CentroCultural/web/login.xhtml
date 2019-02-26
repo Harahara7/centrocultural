@@ -10,21 +10,21 @@
     </h:head>
     <h:body>
         <h:form>
-            <p:panel header="Sistema de Agendamento Centro Cultural"
+            <p:panel header="Sistema de Agendamento Centro Cultural" 
                      style="width: 350px; margin: 0 auto;position: fixed;
                      top: 50%;
                      left: 50%;
                      transform: translate(-50%, -50%);">
+                <p:messages autoupdate="true" closable="true"/>
                 <h:panelGrid columns="2" cellpadding="5">
                     <h:outputText value="Usuário" />
-                    <p:inputText  value=""></p:inputText>
+                    <p:inputText  value="#{usuarioBean.usuario.usuario}" ></p:inputText>
                     <h:outputText value="Senha" />
-                    <p:password  value=""
-                                feedback="false"></p:password>
+                    <p:password  value="#{usuarioBean.usuario.senha}" ></p:password>
                 </h:panelGrid>
                 <h:panelGrid columns="1" cellpadding="10" width="100%">
-                    <p:commandButton id="loginButton" 
-                                     value="Login" style="float: right;">
+                    <p:commandButton action="#{usuarioBean.login()}"
+                                     update="@form" value="Login" style="float: right;">
                     </p:commandButton>
                 </h:panelGrid>
             </p:panel>

@@ -13,26 +13,30 @@ import javax.faces.bean.ManagedBean;
  */
 @ManagedBean
 public class Paginacao {
- 
-    public String locatarioFisico(){
-    return "locatarioFisico";
+
+    public String locatarioFisico() {
+        return "locatarioFisico";
     }
-    
-    public String locatarioJuridico(){
-    return "locatarioJuridico";
+
+    public String locatarioJuridico() {
+        return "locatarioJuridico";
     }
-    
-    public String locatario(){
-    return "locatario";
+
+    public String locatario() {
+        return "locatario";
     }
-    
-    public String evento(){
-    return "evento";
+
+    public String evento() {
+        return "evento";
     }
- 
+
+    public String index() {
+        return "index";
+    }
+
     //redirecionar pra pagina de login
     //apenas para testes
-    public String login(){
-    return "login";
+    public String login() {
+        return "login";
     }
 }

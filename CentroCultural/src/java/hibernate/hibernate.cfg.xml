@@ -44,11 +44,12 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/centro_cultural_bd</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password"></property>
+    <property name="hibernate.connection.password"/>
     <property name="hibernate.show_sql">true</property>
     <mapping class="modelo.Fisico"/>
     <mapping class="modelo.Juridico"/>
     <mapping class="modelo.Evento"/>
     <mapping class="modelo.Locatario"/>
+    <mapping class="modelo.Usuario"/>
   </session-factory>
 </hibernate-configuration>

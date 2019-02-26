@@ -42,10 +42,20 @@ public class Utilidade {
                .addMessage(null, new FacesMessage
                (FacesMessage.SEVERITY_INFO, "Evento selecionado foi confirmado!", null));
             break;
+            case 5:
+               FacesContext.getCurrentInstance()
+               .addMessage(null, new FacesMessage
+               (FacesMessage.SEVERITY_INFO, "Login Efeituado com Sucesso.", null));
+            break;
             case 0:
                FacesContext.getCurrentInstance()
                .addMessage(null, new FacesMessage
                (FacesMessage.SEVERITY_ERROR, "Algum campo está inválido!", null));
+            break;
+            case -1:
+               FacesContext.getCurrentInstance()
+               .addMessage(null, new FacesMessage
+               (FacesMessage.SEVERITY_WARN, "Usuário ou Senha Incorretos!", null));
             break;
             default: 
             break;

@@ -36,12 +36,12 @@ public class Usuario implements Serializable {
     private Integer idUsuario;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 50, message = "Preencha o campo Usuário!")
     @Column(name = "usuario")
     private String usuario;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 50)
+    @Size(min = 1, max = 50, message = "Preencha o Campo Senha!")
     @Column(name = "senha")
     private String senha;
 
