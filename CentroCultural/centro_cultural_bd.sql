@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 23-Fev-2019 às 00:17
+-- Generation Time: 26-Fev-2019 às 22:29
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.1
 
@@ -126,6 +126,25 @@ INSERT INTO `locatario` (`idLocatario`, `idJuridico`, `idFisico`, `nome`, `conta
 (21, NULL, 16, 'Carlos', '(91)98311-1111', 'carlos@gmail.com', '96410-350', 'Rua Onze', 'SÃ£o Martins'),
 (22, NULL, 17, 'Teste do Teste', '(00)00099-9999', 'teste1@email.com.br', '66093-330', 'Jardim Tapajos', 'Marco');
 
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `usuario`
+--
+
+CREATE TABLE `usuario` (
+  `idUsuario` int(11) NOT NULL,
+  `usuario` varchar(50) NOT NULL,
+  `senha` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`idUsuario`, `usuario`, `senha`) VALUES
+(1, 'funcionario', '123456');
+
 --
 -- Indexes for dumped tables
 --
@@ -165,6 +184,12 @@ ALTER TABLE `locatario`
   ADD KEY `fk_locatario_fisico1_idx` (`idFisico`);
 
 --
+-- Indexes for table `usuario`
+--
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`idUsuario`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -197,6 +222,12 @@ ALTER TABLE `juridico`
 --
 ALTER TABLE `locatario`
   MODIFY `idLocatario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT for table `usuario`
+--
+ALTER TABLE `usuario`
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

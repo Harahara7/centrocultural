@@ -4,3 +4,9 @@
     margin-right: auto;
     width: 50%;
 }
+
+#container {
+	min-width: 320px;
+	max-width: 600px;
+	margin: 0 auto;
+}

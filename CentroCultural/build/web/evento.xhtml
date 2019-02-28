@@ -4,29 +4,29 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">  
     <h:head>
         <title>Cadastro de Eventos</title>
-    </h:head>
+    </h:head>   
     <h:body>
         <ui:composition template="paginaMestra.xhtml">
             <ui:define name="conteudo">
                 <script type="text/javascript">
                     //Script de tradução do componente Calendar
-                    PrimeFaces.locales['pt_BR'] = { closeText: 'Fechar',
+                    PrimeFaces.locales['pt_BR'] = {closeText: 'Fechar',
                         prevText: 'Anterior',
                         nextText: 'Próximo',
-                        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
-                        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun', 'Jul','Ago','Set','Out','Nov','Dez'],
-                        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
-                        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'],
-                        dayNamesMin: ['D','S','T','Q','Q','S','S'],
+                        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
+                        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
+                        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
                         weekHeader: 'Semana',
                         weekNumberTitle: 'Sm',
                         firstDay: 0,
                         isRTL: false,
                         showMonthAfterYear: false,
-                        yearSuffix:'',
+                        yearSuffix: '',
                         timeOnlyTitle: 'Só Horas',
                         timeText: 'Horário',
                         hourText: 'Hora',
@@ -37,64 +37,64 @@
                         month: 'Mês',
                         week: 'Semana',
                         day: 'Dia',
-                        allDayText: 'Todo o Dia' }; 
-                    </script>
+                        allDayText: 'Todo o Dia'};
+                </script>
                 <h:form>
                     <p:panel header="Cadastro de Eventos">
                         <p:panelGrid columns="2">
-                            <p:panelGrid columns="2">
-                                <p:outputLabel value="CPF: " />
-                                <p:inputText value="#{eventoBean.locatario.idFisico.cpf}" disabled="true" />
-                                <p:outputLabel value="CNPJ: " />
-                                <p:inputText value="#{eventoBean.locatario.idJuridico.cnpj}" disabled="true" />
-                                <p:outputLabel value="Nome/Razão: " />
-                                <p:inputText value="#{eventoBean.locatario.nome}" disabled="true" />
-                                <p:outputLabel value="Nome do Evento: " />
-                                <p:inputText value="#{eventoBean.evento.nome}" />
-                                <p:outputLabel value="Setor: " />
-                                <p:selectOneMenu value="#{eventoBean.evento.setor}" >
-                                    <f:selectItem itemLabel="Casa das Artes" itemValue="Casa das Artes" />
-                                    <f:selectItem itemLabel="Teatro Margarida Schivasappa" itemValue="Teatro Margarida Schivasappa" />
-                                    <f:selectItem itemLabel="Biblioteca Arthur Vianna" itemValue="Biblioteca Arthur Vianna" />
-                                    <f:selectItem itemLabel="Pátio da Fundação" itemValue="Pátio da Fundação" />
-                                    <f:selectItem itemLabel="Oficina Curro Velho" itemValue="Oficina Curro Velho" />
-                                </p:selectOneMenu>
-                                <p:outputLabel value="Data Início: " />
-                                <p:calendar  value="#{eventoBean.evento.dataInicio}" 
-                                             effect ="slideDown"
-                                             pattern="dd/MM/yyyy HH:mm" 
-                                             timeInput ="true"
-                                             navigator="true"
-                                             locale="pt_BR"
-                                             showHour ="true"
-                                             showMinute ="true"
-                                             readonlyInput="true"
+                            <p:outputLabel value="CPF: " />
+                            <p:inputText value="#{eventoBean.locatario.idFisico.cpf}" disabled="true" />
+                            <p:outputLabel value="CNPJ: " />
+                            <p:inputText value="#{eventoBean.locatario.idJuridico.cnpj}" disabled="true" />
+                            <p:outputLabel value="Nome/Razão: " />
+                            <p:inputText value="#{eventoBean.locatario.nome}" disabled="true" />
+                            <p:outputLabel value="Nome do Evento: " />
+                            <p:inputText value="#{eventoBean.evento.nome}" />
+                            <p:outputLabel value="Setor: " />
+                            <p:selectOneMenu value="#{eventoBean.evento.setor}" >
+                                <f:selectItem itemLabel="Casa das Artes" itemValue="Casa das Artes" />
+                                <f:selectItem itemLabel="Teatro Margarida Schivasappa" itemValue="Teatro Margarida Schivasappa" />
+                                <f:selectItem itemLabel="Biblioteca Arthur Vianna" itemValue="Biblioteca Arthur Vianna" />
+                                <f:selectItem itemLabel="Pátio da Fundação" itemValue="Pátio da Fundação" />
+                                <f:selectItem itemLabel="Oficina Curro Velho" itemValue="Oficina Curro Velho" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Data Início: " />                     
+                            <p:calendar  value="#{eventoBean.evento.dataInicio}"                                              
+                                         effect ="slideDown" 
+                                         pattern="dd/MM/yyyy HH:mm" 
+                                         timeInput ="true"
+                                         navigator="true"
+                                         locale="pt_BR"
+                                         showHour ="true"
+                                         showMinute ="false"
+                                         readonlyInput="true"
+                                         showOn="button"                                             
+                                         />
+                            <p:outputLabel value="Data Fim: " />
+                            <p:calendar value="#{eventoBean.evento.dataFim}" 
+                                        effect ="slideDown"                                              
+                                        pattern="dd/MM/yyyy HH:mm" 
+                                        timeInput ="true"
+                                        navigator="true"
+                                        locale="pt_BR"
+                                        showHour ="true"
+                                        showMinute ="false"
+                                        readonlyInput="true"                                                                                           
+                                        showOn="button"                                               
+                                        />
+                            <p:outputLabel value="Status: " />
+                            <p:selectOneMenu value="#{eventoBean.evento.status}" >
+                                <f:selectItem itemLabel="Agendado" itemValue="Agendado" />
+                                <f:selectItem itemLabel="Confirmado" itemValue="Confirmado" />
+                                <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
+                            </p:selectOneMenu>
+                            <p:outputLabel value="Preço: " />
+                            <p:inputText value="#{eventoBean.evento.preco}" />
+                            <p:commandButton value="Salvar Evento" 
+                                             action="#{eventoBean.salvarEvento()}"
+                                             update="@form"
                                              />
-                                <p:outputLabel value="Data Fim: " />
-                                <p:calendar value="#{eventoBean.evento.dataFim}" 
-                                             effect ="slideDown"
-                                             pattern="dd/MM/yyyy HH:mm" 
-                                             timeInput ="true"
-                                             navigator="true"
-                                             locale="pt_BR"
-                                             showHour ="true"
-                                             showMinute ="true"
-                                             readonlyInput="true"
-                                             />
-                                <p:outputLabel value="Status: " />
-                                <p:selectOneMenu value="#{eventoBean.evento.status}" >
-                                    <f:selectItem itemLabel="Agendado" itemValue="Agendado" />
-                                    <f:selectItem itemLabel="Confirmado" itemValue="Confirmado" />
-                                    <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
-                                </p:selectOneMenu>
-                                <p:outputLabel value="Preço: " />
-                                <p:inputText value="#{eventoBean.evento.preco}" />
-                                <p:commandButton value="Salvar Evento" 
-                                                 action="#{eventoBean.salvarEvento()}"
-                                                 update="@form"
-                                                 />
-                                 <p:messages autoUpdate="true" closable="true"/>
-                            </p:panelGrid>
+                            <p:messages autoUpdate="true" closable="true"/>
                         </p:panelGrid>
                     </p:panel>
                     <p:panel header="Tabela de Eventos">
@@ -109,12 +109,12 @@
                                      filteredValue="#{eventoBean.listaEventoFiltrado}"
                                      emptyMessage="Não existem eventos cadastrados!"
                                      >
-                                <f:facet name="header">
-                                    <p:outputPanel>    
-                                        <h:outputText value="Buscar: " />    
-                                        <p:inputText id="globalFilter" onkeyup="PF('tabelaEvento').filter()" />
-                                    </p:outputPanel>
-                                </f:facet>
+                            <f:facet name="header">
+                                <p:outputPanel>    
+                                    <h:outputText value="Buscar: " />    
+                                    <p:inputText id="globalFilter" onkeyup="PF('tabelaEvento').filter()" />
+                                </p:outputPanel>
+                            </f:facet>
                             <p:column filterBy="#{evento.idLocatario.nome}" filterMatchMode="contains" headerText="Locatario">
                                 <p:outputLabel value="#{evento.idLocatario.nome}" />
                             </p:column>
@@ -141,15 +141,18 @@
                                 <p:outputLabel value="#{evento.preco}" />
                             </p:column>
                             <p:column headerText="Ações">
-                                <p:commandButton value="Remover" 
+                                <p:commandButton title="Remover"
+                                                 icon="ui-icon-trash"
                                                  action="#{eventoBean.removerEvento()}"
                                                  update="@form"
                                                  />
-                                <p:commandButton value="Alterar" 
+                                <p:commandButton title="Alterar"
+                                                 icon="ui-icon-pencil"
                                                  action="#{eventoBean.carregarEvento()}"
                                                  update="@form"
                                                  />
-                                <p:commandButton value="Confirmar" 
+                                <p:commandButton title="Confirmar"
+                                                 icon="ui-icon-check"
                                                  action="#{eventoBean.confirmarEvento()}"
                                                  update="@form"
                                                  />
