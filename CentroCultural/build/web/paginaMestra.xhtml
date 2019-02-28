@@ -3,29 +3,49 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Sistema Centro Cultural</title>
     </h:head>
-    <h:body>
+    <h:body>      
         <p:layout fullPage="true">
+             <!-- Cabeçalho -->
+            <p:layoutUnit position="north" size="100" resizable="false" closable="false" collapsible="false">
+
+                <h:form>  
+                    <p:toolbar>      
+                        <f:facet name="left">
+                            <span class="ui-separator">
+                               Sistema Centro Cultural
+                            </span>
+                        </f:facet>
+                        <f:facet name="right">                      
+                            <p:commandButton action = "#{paginacao.login}" value="Logout"/>
+                        </f:facet>
+
+                    </p:toolbar>
+                </h:form>
+            </p:layoutUnit>
+            <!-- Barra Lateral -->
             <p:layoutUnit position="west" 
                           size="318"    
                           resizable="false" 
                           collapsible="false">
-                <p:panel header="Sistema Centro Cultural">
+                <p:panel header="Menu">
                     <h:form>
-                    <p:menu>
-                        <p:submenu label="Locatário">
-                            <p:menuitem action="#{paginacao.locatario()}" value="Gerenciar Locatários"/>
-                        </p:submenu>
-                        <p:submenu label="Eventos">
-                            <p:menuitem action="#{paginacao.evento()}" value="Gerenciar Eventos" />
-                        </p:submenu>
-                    </p:menu>
-                </h:form>
+                        <p:menu>
+                            <p:submenu label="Locatário">
+                                <p:menuitem action="#{paginacao.locatario()}" value="Gerenciar Locatários"/>
+                            </p:submenu>
+                            <p:submenu label="Eventos">
+                                <p:menuitem action="#{paginacao.evento()}" value="Gerenciar Eventos" />
+                            </p:submenu>
+                        </p:menu>
+                    </h:form>
                 </p:panel>
             </p:layoutUnit>
+            <!-- Conteúdo central -->
             <p:layoutUnit position="center">
                 <ui:insert name="conteudo"/>
             </p:layoutUnit>

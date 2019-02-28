@@ -105,15 +105,18 @@
                             </p:column>
                             <p:column headerText="Ações">
                                 <p:commandButton update="@form"
-                                                 value="Remover"
+                                                 title="Remover"
+                                                 icon="ui-icon-trash"
                                                  action="#{locatarioBean.removerLocatario()}"
                                                  />
                                 <p:commandButton update="@form"
-                                                 value="Alterar"
+                                                 title="Alterar"
+                                                 icon="ui-icon-pencil"
                                                  action="#{locatarioBean.carregarLocatario()}"
                                                  />
                                 <p:commandButton update="@form"
-                                                 value="Locação para Evento"
+                                                 title="Locação para Evento"
+                                                 icon="ui-icon-arrowthickstop-1-e"
                                                  action="#{paginacao.evento()}">
                                     <f:setPropertyActionListener 
                                         value="#{locatarioBean.locatarioSelecionado}"

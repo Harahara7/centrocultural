@@ -29,7 +29,11 @@ public class Paginacao {
     public String evento() {
         return "evento";
     }
-
+    
+    public String chart(){
+    return "chart";
+    }
+    
     public String index() {
         return "index";
     }

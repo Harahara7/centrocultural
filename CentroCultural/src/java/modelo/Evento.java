@@ -76,6 +76,10 @@ public class Evento implements Serializable {
     @JoinColumn(name = "idLocatario", referencedColumnName = "idLocatario")
     @ManyToOne(optional = false)
     private Locatario idLocatario;
+    
+    public void ajustaData(){
+        dataFim = dataInicio;
+    }
 
     public Evento() {
     }

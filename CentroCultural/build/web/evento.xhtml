@@ -4,10 +4,10 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">  
     <h:head>
         <title>Cadastro de Eventos</title>
-    </h:head>
+    </h:head>   
     <h:body>
         <ui:composition template="paginaMestra.xhtml">
             <ui:define name="conteudo">
@@ -38,7 +38,7 @@
                         week: 'Semana',
                         day: 'Dia',
                         allDayText: 'Todo o Dia' }; 
-                    </script>
+                </script>
                 <h:form>
                     <p:panel header="Cadastro de Eventos">
                         <p:panelGrid columns="2">
@@ -59,27 +59,29 @@
                                     <f:selectItem itemLabel="Pátio da Fundação" itemValue="Pátio da Fundação" />
                                     <f:selectItem itemLabel="Oficina Curro Velho" itemValue="Oficina Curro Velho" />
                                 </p:selectOneMenu>
-                                <p:outputLabel value="Data Início: " />
-                                <p:calendar  value="#{eventoBean.evento.dataInicio}" 
-                                             effect ="slideDown"
+                                <p:outputLabel value="Data Início: " />                     
+                                <p:calendar  value="#{eventoBean.evento.dataInicio}"                                              
+                                             effect ="slideDown" 
                                              pattern="dd/MM/yyyy HH:mm" 
                                              timeInput ="true"
                                              navigator="true"
                                              locale="pt_BR"
                                              showHour ="true"
-                                             showMinute ="true"
+                                             showMinute ="false"
                                              readonlyInput="true"
+                                             showOn="button"                                             
                                              />
                                 <p:outputLabel value="Data Fim: " />
                                 <p:calendar value="#{eventoBean.evento.dataFim}" 
-                                             effect ="slideDown"
+                                             effect ="slideDown"                                              
                                              pattern="dd/MM/yyyy HH:mm" 
                                              timeInput ="true"
                                              navigator="true"
                                              locale="pt_BR"
                                              showHour ="true"
-                                             showMinute ="true"
-                                             readonlyInput="true"
+                                             showMinute ="false"
+                                             readonlyInput="true"                                                                                           
+                                             showOn="button"                                               
                                              />
                                 <p:outputLabel value="Status: " />
                                 <p:selectOneMenu value="#{eventoBean.evento.status}" >
@@ -94,8 +96,11 @@
                                                  update="@form"
                                                  />
                                  <p:messages autoUpdate="true" closable="true"/>
+                                 
+                            </p:panelGrid>                         
+                    <!--           <p:menuitem action="#{paginacao.chart()}" value="Chart" /> -->
                             </p:panelGrid>
-                        </p:panelGrid>
+                        
                     </p:panel>
                     <p:panel header="Tabela de Eventos">
                         <p:dataTable widgetVar="tabelaEvento"
@@ -141,15 +146,18 @@
                                 <p:outputLabel value="#{evento.preco}" />
                             </p:column>
                             <p:column headerText="Ações">
-                                <p:commandButton value="Remover" 
+                                <p:commandButton title="Remover"
+                                                 icon="ui-icon-trash"
                                                  action="#{eventoBean.removerEvento()}"
                                                  update="@form"
                                                  />
-                                <p:commandButton value="Alterar" 
+                                <p:commandButton title="Alterar"
+                                                 icon="ui-icon-pencil"
                                                  action="#{eventoBean.carregarEvento()}"
                                                  update="@form"
                                                  />
-                                <p:commandButton value="Confirmar" 
+                                <p:commandButton title="Confirmar"
+                                                 icon="ui-icon-check"
                                                  action="#{eventoBean.confirmarEvento()}"
                                                  update="@form"
                                                  />
