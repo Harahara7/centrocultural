@@ -19,11 +19,11 @@
     </servlet-mapping>
     <session-config>
         <session-timeout>
-            60
+            300
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>faces/login.xhtml</welcome-file>
+        <welcome-file>faces/evento.xhtml</welcome-file>
     </welcome-file-list>
     
 </web-app>
