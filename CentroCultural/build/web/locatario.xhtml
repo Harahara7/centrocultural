@@ -12,7 +12,7 @@
         <ui:composition template="paginaMestra.xhtml">
             <ui:define name="conteudo">
                 <h:form>
-                    <p:panelGrid columns="2">
+                    <p:panelGrid columns="3">
                         <p:panel header="Cadastro de Locatario" toggleable="true" toggleOrientation="vertical">
                             <p:panelGrid columns="1" >
                                 <h:selectOneRadio value="#{selectOneBox.selecao}">
@@ -48,17 +48,20 @@
                                 <p:messages autoUpdate="true" closable="true"/>
                             </p:panelGrid>
                         </p:panel>
-                            <p:panel header="Validar CEP" toggleable="true" toggleOrientation="vertical">
-                                <p:panelGrid columns="2">
-                                    <p:outputLabel value="CEP" />
-                                    <p:inputMask value="#{locatarioBean.cepWS.cepCampo}" mask="99999999"/> 
-                                    <p:commandButton 
-                                        value="Buscar/Validar" 
-                                        action="#{locatarioBean.carregarCep()}"
-                                        update="@form"
-                                        />
-                                </p:panelGrid>
-                            </p:panel>
+                        <p:panel header="Validar CEP" toggleable="true" toggleOrientation="vertical">
+                            <p:panelGrid columns="2">
+                                <p:outputLabel value="CEP" />
+                                <p:inputMask value="#{locatarioBean.cepWS.cepCampo}" mask="99999999"/> 
+                                <p:commandButton 
+                                    value="Buscar/Validar" 
+                                    action="#{locatarioBean.carregarCep()}"
+                                    update="@form"
+                                    />
+                            </p:panelGrid>
+                        </p:panel>
+                                    
+                        <p:chart type="bar" model="#{chartView.horizontalBarModel}" style="height:300px; width:600px"/>
+                       
                     </p:panelGrid>    
                     <p:panel header="Lista de Locatários">
                         <p:dataTable
@@ -73,12 +76,12 @@
                             filteredValue="#{locatarioBean.listaLocatarioFiltrado}"
                             emptyMessage="Não existem locatarios cadastrados!"
                             >
-                                <f:facet name="header">
-                                    <p:outputPanel>    
-                                        <h:outputText value="Buscar: " />    
-                                        <p:inputText id="globalFilter" onkeyup="PF('tabela').filter()" />
-                                    </p:outputPanel>
-                                </f:facet>
+                            <f:facet name="header">
+                                <p:outputPanel>    
+                                    <h:outputText value="Buscar: " />    
+                                    <p:inputText id="globalFilter" onkeyup="PF('tabela').filter()" />
+                                </p:outputPanel>
+                            </f:facet>
                             <p:column filterBy="#{locatario.idJuridico.cnpj}" filterMatchMode="contains" headerText="CNPJ">
                                 <p:outputLabel value="#{locatario.idJuridico.cnpj}" />
                             </p:column>

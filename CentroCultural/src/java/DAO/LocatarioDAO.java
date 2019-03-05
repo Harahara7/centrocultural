@@ -8,6 +8,7 @@ package DAO;
 import java.util.ArrayList;
 import java.util.List;
 import modelo.Fisico;
+import modelo.Juridico;
 import modelo.Locatario;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -72,5 +73,31 @@ public class LocatarioDAO {
         return listaLocatario;
         
     }//listarClientes
+    
+    public List<Fisico> listarLocatariosFisicos(){
+        
+        //Query em cima dos Objetos! (Classes)
+        String queryObj = "from Fisico";
+        List<Fisico> listaLocatarioFisico = new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();   
+        listaLocatarioFisico = s.createQuery(queryObj).list();
+        s.close();
+   
+        return listaLocatarioFisico;
+               
+    }//listarQuantidadedePessoaFisica
+    
+        public List<Juridico> listarLocatariosJuridicos(){
+        
+        //Query em cima dos Objetos! (Classes)
+        String queryObj = "from Juridico";
+        List<Juridico> listaLocatarioJuridico = new ArrayList<>();
+        Session s = HibernateUtil.getSessionFactory().openSession();   
+        listaLocatarioJuridico = s.createQuery(queryObj).list();
+        s.close();
+ 
+        return listaLocatarioJuridico;
+               
+    }//listarQuantidadedePessoaJuridica
     
 }//class

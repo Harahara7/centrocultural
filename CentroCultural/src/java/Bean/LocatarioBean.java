@@ -20,6 +20,8 @@ import modelo.Locatario;
 @ManagedBean
 public class LocatarioBean {
 
+    private List<Fisico> listaLocatarioFisico;
+    private List<Juridico> listaLocatarioJuridico;
     private Fisico fisico;
     private Juridico juridico;
     private Locatario locatario;
@@ -240,4 +242,20 @@ public class LocatarioBean {
         this.listaLocatarioFiltrado = listaLocatarioFiltrado;
     }
 
+    public int quantidadeLocatarioFisico() {
+        if (listaLocatarioFisico == null) {
+            LocatarioDAO lDAO = new LocatarioDAO();
+            listaLocatarioFisico = lDAO.listarLocatariosFisicos();
+        }
+        return listaLocatarioFisico.size();
+    }//retorna a quantidade de locatarios do tipo PF
+    
+    public int quantidadeLocatarioJuridico() {
+        if (listaLocatarioJuridico == null) {
+            LocatarioDAO lDAO = new LocatarioDAO();
+            listaLocatarioJuridico = lDAO.listarLocatariosJuridicos();
+        }
+        return listaLocatarioJuridico.size();
+    }//retorna a quantidade de locatarios do tipo PJ
+    
 }//class
