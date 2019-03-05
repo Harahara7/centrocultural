@@ -77,10 +77,6 @@ public class Evento implements Serializable {
     @ManyToOne(optional = false)
     private Locatario idLocatario;
     
-    public void ajustaData(){
-        dataFim = dataInicio;
-    }
-
     public Evento() {
     }
 

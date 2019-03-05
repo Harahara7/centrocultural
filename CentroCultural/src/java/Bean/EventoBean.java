@@ -8,6 +8,7 @@ package Bean;
 //import Webservice.CepWebServiceBean;
 import DAO.EventoDAO;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -32,12 +33,15 @@ public class EventoBean {
     private Utilidade utilidade = new Utilidade();
     private Date dataHoje = new Date(); //Objeto já traz a data atual.
 
-    public void salvarEvento() {
+    public void salvarEvento() throws ParseException {
+        EventoDAO eDAO2 = new EventoDAO();
         if (evento.getNome().length() > 1
                 && evento.getDataInicio() != null
                 && evento.getDataFim() != null
+                && evento.getDataInicio().before(evento.getDataFim()) 
                 && evento.getPreco().length() > 1
                 && evento.getIdEvento() == null
+                && eDAO2.verificarData(evento) == true
                 ) {
 //        if(evento.getIdEvento() == null){
             //evento.setIdLocatario e getEvento faz a mesma coisa.
@@ -62,6 +66,7 @@ public class EventoBean {
                     && evento.getNome().length() > 1
                     && evento.getDataInicio().before(evento.getDataFim()) 
                     && evento.getPreco().length() > 1
+                    && eDAO2.verificarData(evento) == true
                     ) {
                 EventoDAO eDAO = new EventoDAO();
                 eDAO.alterar(evento);
