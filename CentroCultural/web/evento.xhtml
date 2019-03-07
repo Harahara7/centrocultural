@@ -68,10 +68,14 @@
                                          showHour ="true"
                                          showMinute ="false"
                                          readonlyInput="true"
-                                         showOn="button"                                             
-                                         />
+                                         showOn="button"  
+                                         mindate="#{eventoBean.getDataHoje()}"
+                                         >
+                                <p:ajax event="dateSelect" update="segundoCalendario" listener="#{eventoBean.ajustarDataMin()}" />  
+                             </p:calendar>
                             <p:outputLabel value="Data Fim: " />
                             <p:calendar value="#{eventoBean.evento.dataFim}" 
+                                        id="segundoCalendario"
                                         effect ="slideDown"                                              
                                         pattern="dd/MM/yyyy HH:mm" 
                                         timeInput ="true"
@@ -80,7 +84,8 @@
                                         showHour ="true"
                                         showMinute ="false"
                                         readonlyInput="true"                                                                                           
-                                        showOn="button"                                               
+                                        showOn="button"   
+                                        mindate="#{eventoBean.evento.dataInicio}"
                                         />
                             <p:outputLabel value="Status: " />
                             <p:selectOneMenu value="#{eventoBean.evento.status}" >
