@@ -57,6 +57,11 @@ public class Utilidade {
                .addMessage(null, new FacesMessage
                (FacesMessage.SEVERITY_WARN, "Usuário ou Senha Incorretos!", null));
             break;
+            case -2:
+               FacesContext.getCurrentInstance()
+               .addMessage(null, new FacesMessage
+               (FacesMessage.SEVERITY_ERROR, "Algum campo ou Data está invalido!", null));
+            break;
             default: 
             break;
             

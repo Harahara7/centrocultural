@@ -66,14 +66,14 @@ public class EventoBean {
                     && evento.getNome().length() > 1
                     && evento.getDataInicio().before(evento.getDataFim()) 
                     && evento.getPreco().length() > 1
-                    && eDAO2.verificarData(evento) == true
+                    && eDAO2.verificarData(evento,eventoSelecionado) == true
                     ) {
                 EventoDAO eDAO = new EventoDAO();
                 eDAO.alterar(evento);
                 utilidade.mensagemAviso(2);
                 limpar();
             } else {
-                utilidade.mensagemAviso(0);
+                utilidade.mensagemAviso(-2);
             }
         }
 //É necessário limpar a lista de Eventos, pois

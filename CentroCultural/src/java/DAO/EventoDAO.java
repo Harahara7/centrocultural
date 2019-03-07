@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import Bean.EventoBean;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -23,9 +24,14 @@ import util.HibernateUtil;
  */
 public class EventoDAO {
     
-    //SELECT * FROM evento where setor = 'Teatro Margarida Schivasappa' AND ('2019-03-08' BETWEEN dataInicio AND dataFim) 
-        //OR ('2019-03-08' BETWEEN dataInicio AND dataFim)
-    
+//     SELECT * FROM evento where setor = 'Teatro Margarida Schivasappa' ;
+// AND ((dataInicio BETWEEN '2019-03-01' AND '2019-03-07') 
+// OR (dataFim BETWEEN '2019-03-01' AND '2019-03-07'))
+// UNION
+// SELECT * FROM evento where setor = 'Teatro Margarida Schivasappa' 
+// AND (('2019-03-01' BETWEEN dataInicio AND dataFim) 
+// OR ('2019-03-07' BETWEEN dataInicio AND dataFim))
+//    
     public boolean verificarData(Evento evento) throws ParseException{
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");    
         Date data = evento.getDataInicio(); 
@@ -34,11 +40,56 @@ public class EventoDAO {
         String dataFimFormatada = fmt.format(datafim);
         try {
             Session s = HibernateUtil.getSessionFactory().openSession();
-            String stmt = "FROM Evento where setor = '" + evento.getSetor() 
-                    + "' AND ('" + dataInicioFormatada + "' BETWEEN dataInicio AND dataFim)"
-                    + " OR ('" + dataFimFormatada + "' BETWEEN dataInicio AND dataFim)";
+            String stmt = "FROM Evento where setor = '" + evento.getSetor() + "' "
+                    + "AND (('" + dataInicioFormatada + "' BETWEEN dataInicio AND dataFim) "
+                    + "OR ('" + dataFimFormatada + "' BETWEEN dataInicio AND dataFim)) ";
+           String stmt2 = "FROM Evento where setor = '" + evento.getSetor() + "' "
+                    + "AND ((dataInicio BETWEEN '" + dataInicioFormatada + "' AND '" + dataFimFormatada + "') "
+                    + "OR (dataFim BETWEEN '" + dataInicioFormatada + "' AND '" + dataFimFormatada + "')) ";
             Query query = s.createQuery(stmt);
-            if (query.list().isEmpty()) {
+            Query query2 = s.createQuery(stmt2);
+            if (query.list().isEmpty() && query2.list().isEmpty()) {
+                return true; //retorna que a lista ta vazia
+            } else {
+                return false; //retorna que tem algo na lista
+            }
+        } catch (HibernateException e) {
+            throw e;
+        }
+    }
+    
+    
+// SELECT * FROM evento where setor = 'Teatro Margarida Schivasappa' 
+// AND ((dataInicio BETWEEN '2019-03-01' AND '2019-03-30') 
+// OR (dataFim BETWEEN '2019-03-01' AND '2019-03-30'))
+// AND idEvento != 5
+// UNION
+// SELECT * FROM evento where setor = 'Teatro Margarida Schivasappa' 
+// AND (('2019-03-01' BETWEEN dataInicio AND dataFim) 
+// OR ('2019-03-30' BETWEEN dataInicio AND dataFim))
+// AND idEvento != 5
+    
+        public boolean verificarData(Evento evento,Evento eventoselecionado) throws ParseException{
+        SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");    
+        Date data = evento.getDataInicio(); 
+        String dataInicioFormatada = fmt.format(data);
+        Date datafim = evento.getDataFim(); 
+        String dataFimFormatada = fmt.format(datafim);
+        int ev = eventoselecionado.getIdEvento();
+        try {
+            Session s = HibernateUtil.getSessionFactory().openSession();
+            String stmt = "FROM Evento where setor = '" + evento.getSetor() + "' "
+                    + "AND (('" + dataInicioFormatada + "' BETWEEN dataInicio AND dataFim) "
+                    + "OR ('" + dataFimFormatada + "' BETWEEN dataInicio AND dataFim)) "
+                    + "AND idEvento != '" + ev + "' ";
+           String stmt2 = "FROM Evento where setor = '" + evento.getSetor() + "' "
+                    + "AND ((dataInicio BETWEEN '" + dataInicioFormatada + "' AND '" + dataFimFormatada + "') "
+                    + "OR (dataFim BETWEEN '" + dataInicioFormatada + "' AND '" + dataFimFormatada + "')) "
+                   + "AND idEvento != '" + ev + "' ";
+            Query query = s.createQuery(stmt);
+            Query query2 = s.createQuery(stmt2);
+            
+            if (query.list().isEmpty() && query2.list().isEmpty()) {
                 return true; //retorna que a lista ta vazia
             } else {
                 return false; //retorna que tem algo na lista
