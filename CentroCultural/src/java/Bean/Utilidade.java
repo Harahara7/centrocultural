@@ -28,7 +28,7 @@ public class Utilidade {
             case 2:
                FacesContext.getCurrentInstance()
                .addMessage(null, new FacesMessage
-               (FacesMessage.SEVERITY_WARN, "Dados foram alterados"
+               (FacesMessage.SEVERITY_INFO, "Dados foram alterados"
                        + " com sucesso!", null));
             break;
             case 3:
@@ -61,6 +61,16 @@ public class Utilidade {
                FacesContext.getCurrentInstance()
                .addMessage(null, new FacesMessage
                (FacesMessage.SEVERITY_ERROR, "Algum campo ou Data está invalido!", null));
+            break;
+            case -3:
+               FacesContext.getCurrentInstance()
+               .addMessage(null, new FacesMessage
+               (FacesMessage.SEVERITY_WARN, "Já existe um Evento confirmado nesta Data!", null));
+            break;
+            case -4:
+               FacesContext.getCurrentInstance()
+               .addMessage(null, new FacesMessage
+               (FacesMessage.SEVERITY_FATAL, "Evento foi cancelado!", null));
             break;
             default: 
             break;

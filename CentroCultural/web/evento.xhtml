@@ -88,12 +88,6 @@
                                         showOn="button"   
                                         mindate="#{eventoBean.evento.dataInicio}"
                                         />
-                            <p:outputLabel value="Status: " />
-                            <p:selectOneMenu value="#{eventoBean.evento.status}" >
-                                <f:selectItem itemLabel="Agendado" itemValue="Agendado" />
-                                <f:selectItem itemLabel="Confirmado" itemValue="Confirmado" />
-                                <f:selectItem itemLabel="Cancelado" itemValue="Cancelado" />
-                            </p:selectOneMenu>
                             <p:outputLabel value="Preço: " />
                             <p:inputText value="#{eventoBean.evento.preco}" />
                             <p:commandButton value="Salvar Evento" 
@@ -168,6 +162,11 @@
                                 <p:commandButton title="Confirmar"
                                                  icon="ui-icon-check"
                                                  action="#{eventoBean.confirmarEvento()}"
+                                                 update="@form"
+                                                 />
+                                <p:commandButton title="Cancelar"
+                                                 icon="ui-icon-cancel"
+                                                 action="#{eventoBean.cancelarEvento()}"
                                                  update="@form"
                                                  />
                             </p:column>

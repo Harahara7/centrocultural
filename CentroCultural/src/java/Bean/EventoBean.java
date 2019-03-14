@@ -41,7 +41,7 @@ public class EventoBean {
                 && evento.getDataInicio().before(evento.getDataFim()) 
                 && evento.getPreco().length() > 1
                 && evento.getIdEvento() == null
-                && eDAO2.verificarData(evento) == true
+                //&& eDAO2.verificarData(evento) == true
                 ) {
 //        if(evento.getIdEvento() == null){
             //evento.setIdLocatario e getEvento faz a mesma coisa.
@@ -57,6 +57,7 @@ public class EventoBean {
              */
             locatario.getEventoList().add(getEvento());
             EventoDAO eDAO = new EventoDAO();
+            evento.setStatus("Agendado");
             eDAO.salvar(evento);
             utilidade.mensagemAviso(1);
             limpar();
@@ -66,9 +67,10 @@ public class EventoBean {
                     && evento.getNome().length() > 1
                     && evento.getDataInicio().before(evento.getDataFim()) 
                     && evento.getPreco().length() > 1
-                    && eDAO2.verificarData(evento,eventoSelecionado) == true
+                    //&& eDAO2.verificarData(evento,eventoSelecionado) == true
                     ) {
                 EventoDAO eDAO = new EventoDAO();
+                evento.setStatus("Agendado");
                 eDAO.alterar(evento);
                 utilidade.mensagemAviso(2);
                 limpar();
@@ -82,14 +84,28 @@ public class EventoBean {
         setListaEvento(null);
     }
 
-    public void confirmarEvento() {
-        setEvento(eventoSelecionado);
-        evento.setStatus("Confirmado");
+    public void confirmarEvento() throws ParseException{
         EventoDAO eDAO = new EventoDAO();
-        eDAO.alterar(evento);
-        limpar();
-        setListaEvento(null);
-        utilidade.mensagemAviso(4);
+            if (eDAO.verificarData(eventoSelecionado)){
+            setEvento(eventoSelecionado);
+            evento.setStatus("Confirmado");
+            eDAO.alterar(evento);
+            limpar();
+            setListaEvento(null);
+            utilidade.mensagemAviso(4);
+        } else {
+            utilidade.mensagemAviso(-3);
+        }
+    }
+    
+        public void cancelarEvento() throws ParseException{
+            EventoDAO eDAO = new EventoDAO();
+            setEvento(eventoSelecionado);
+            evento.setStatus("Cancelado");
+            eDAO.alterar(evento);
+            limpar();
+            setListaEvento(null);
+            utilidade.mensagemAviso(-4);
     }
 
     public void removerEvento() {

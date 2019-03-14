@@ -23,15 +23,15 @@ import util.HibernateUtil;
  * @author Yusuke
  */
 public class EventoDAO {
-    
-//     SELECT * FROM evento where setor = 'Teatro Margarida Schivasappa' ;
-// AND ((dataInicio BETWEEN '2019-03-01' AND '2019-03-07') 
-// OR (dataFim BETWEEN '2019-03-01' AND '2019-03-07'))
+//     SELECT * FROM evento where setor = 'Casa das Artes' 
+// AND `STATUS` = "Confirmado"
+// AND ((dataInicio BETWEEN '2019-03-18' AND '2019-03-22') 
+// OR (dataFim BETWEEN '2019-03-18' AND '2019-03-22'))
 // UNION
-// SELECT * FROM evento where setor = 'Teatro Margarida Schivasappa' 
-// AND (('2019-03-01' BETWEEN dataInicio AND dataFim) 
-// OR ('2019-03-07' BETWEEN dataInicio AND dataFim))
-//    
+// SELECT * FROM evento where setor = 'Casa das Artes' 
+// AND `STATUS` = "Confirmado"
+// AND (('2019-03-18' BETWEEN dataInicio AND dataFim) 
+// OR ('2019-03-22' BETWEEN dataInicio AND dataFim))
     public boolean verificarData(Evento evento) throws ParseException{
         SimpleDateFormat fmt = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");    
         Date data = evento.getDataInicio(); 
@@ -41,9 +41,11 @@ public class EventoDAO {
         try {
             Session s = HibernateUtil.getSessionFactory().openSession();
             String stmt = "FROM Evento where setor = '" + evento.getSetor() + "' "
+                    + "AND status = \'Confirmado\' "
                     + "AND (('" + dataInicioFormatada + "' BETWEEN dataInicio AND dataFim) "
                     + "OR ('" + dataFimFormatada + "' BETWEEN dataInicio AND dataFim)) ";
            String stmt2 = "FROM Evento where setor = '" + evento.getSetor() + "' "
+                   + "AND status = \'Confirmado\' "
                     + "AND ((dataInicio BETWEEN '" + dataInicioFormatada + "' AND '" + dataFimFormatada + "') "
                     + "OR (dataFim BETWEEN '" + dataInicioFormatada + "' AND '" + dataFimFormatada + "')) ";
             Query query = s.createQuery(stmt);
