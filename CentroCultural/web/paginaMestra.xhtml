@@ -7,48 +7,73 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Sistema Centro Cultural</title>
+        <link rel="stylesheet" type="text/css" href="css\main.css"></link>
     </h:head>
     <h:body>      
         <p:layout fullPage="true">
-             <!-- Cabeçalho -->
-            <p:layoutUnit position="north" size="100" resizable="false" closable="false" collapsible="false">
 
-                <h:form>  
-                    <p:toolbar>      
-                        <f:facet name="left">
-                            <span class="ui-separator">
-                               Sistema Centro Cultural
-                            </span>
-                        </f:facet>
-                        <f:facet name="right">                      
-                            <p:commandButton action = "#{paginacao.login}" value="Logout"/>
-                        </f:facet>
+            <!-- Cabeçalho -->
+            <div class="main-header">
+                <div id="logo">
+                    <img src="img\maskiconp.png" alt="Smiley face" height="50" width="50" ></img>
+                </div>
+                <div id="titulo">
+                    <strong> Sistema Centro Cultural </strong>
+                </div>
+                <div id="botaologout">              
+                    <p:commandButton action = "#{paginacao.login}" value="Logout"/>
+                </div>
+            </div>
+            <!-- Preenchimento Cabeçalho -->
+            <p:layoutUnit position="north" 
+                          size="40"    
+                          resizable="false"
+                          closable="false" 
+                          collapsible="false"
+                          >
 
-                    </p:toolbar>
-                </h:form>
             </p:layoutUnit>
+
+
             <!-- Barra Lateral -->
+            <div class="main-sidebar">
+                <h:form>
+                    <p:menu>
+                        <p:submenu label="Menu">
+                            <p:menuitem action="#{paginacao.locatario()}" value="Gerenciar Locatários"/>
+                            <p:menuitem action="#{paginacao.evento()}" value="Gerenciar Eventos" />
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+            </div>
+            <!-- Preenchimento da barra lateral -->
             <p:layoutUnit position="west" 
-                          size="318"    
+                          size="155"    
                           resizable="false" 
-                          collapsible="false">
-                <p:panel header="Menu">
-                    <h:form>
-                        <p:menu>
-                            <p:submenu label="Locatário">
-                                <p:menuitem action="#{paginacao.locatario()}" value="Gerenciar Locatários"/>
-                            </p:submenu>
-                            <p:submenu label="Eventos">
-                                <p:menuitem action="#{paginacao.evento()}" value="Gerenciar Eventos" />
-                            </p:submenu>
-                        </p:menu>
-                    </h:form>
-                </p:panel>
+                          >
+
             </p:layoutUnit>
+
             <!-- Conteúdo central -->
             <p:layoutUnit position="center">
                 <ui:insert name="conteudo"/>
             </p:layoutUnit>
+
+
+            <!-- Conteúdo central -->
+            <p:layoutUnit position="south"
+
+                          >
+                <footer class="main-footer">
+                    <!-- To the right -->
+                    <div class="pull-right">Centro Cultural</div>
+                    <!-- Default to the left -->
+                    Todos os direitos reservados
+                </footer>
+            </p:layoutUnit>
+
+
+
         </p:layout>
     </h:body>
 </html>

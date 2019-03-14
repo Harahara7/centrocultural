@@ -1,0 +1,108 @@
+body {
+    font-family: Tahoma;
+    font-size: 12px;
+}
+
+.bbody {
+    font-family: "Lato", sans-serif;
+}
+
+
+/*Cabeçalho*/
+.main-header {
+    position: relative;
+    max-height: 100px;
+    z-index: 1030;
+    background-color: #1E477B;
+    padding-bottom: 50px;
+}
+
+#botaologout{
+    float: right !important;
+    padding-top: 15px;
+    padding-right: 0.5%;
+}
+
+#logo {
+    float: left !important;
+    padding-left: 1%;
+}
+
+#titulo {
+    float: left !important;
+    padding-left: 1%;
+    padding-top: 15px;
+    color: rgb(91, 214, 245);
+}
+
+.navbar {
+    background-color: #1E477B;
+}
+
+
+/*Barra Lateral*/
+.main-sidebar, .left-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-top: 50px; /*altura do menu*/
+    min-height: 100%;
+    width: 160px;
+    z-index: 810;
+    background-color: #EFEFF1 !important;
+}
+
+.sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/*Rodapé*/
+.main-footer {
+    background-color: #F1F1F1;
+    text-align: center;
+    padding: 10px;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+/*Editar*/
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+}
+
+/*old*/
+
+#container {
+    min-width: 320px;
+    max-width: 600px;
+    margin: 0 auto;
+}
