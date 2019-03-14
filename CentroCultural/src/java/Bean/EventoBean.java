@@ -7,9 +7,7 @@ package Bean;
 
 //import Webservice.CepWebServiceBean;
 import DAO.EventoDAO;
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
@@ -39,7 +37,7 @@ public class EventoBean {
                 && evento.getDataInicio() != null
                 && evento.getDataFim() != null
                 && evento.getDataInicio().before(evento.getDataFim()) 
-                && evento.getPreco().length() > 1
+                && evento.getPreco().length() >= 1
                 && evento.getIdEvento() == null
                 //&& eDAO2.verificarData(evento) == true
                 ) {
@@ -66,7 +64,7 @@ public class EventoBean {
                     && evento.getIdEvento() != null
                     && evento.getNome().length() > 1
                     && evento.getDataInicio().before(evento.getDataFim()) 
-                    && evento.getPreco().length() > 1
+                    && evento.getPreco().length() >= 1
                     //&& eDAO2.verificarData(evento,eventoSelecionado) == true
                     ) {
                 EventoDAO eDAO = new EventoDAO();

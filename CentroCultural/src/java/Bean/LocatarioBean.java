@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import modelo.Evento;
 import modelo.Fisico;
 import modelo.Juridico;
 import modelo.Locatario;
@@ -25,6 +26,7 @@ public class LocatarioBean {
     private Fisico fisico;
     private Juridico juridico;
     private Locatario locatario;
+//    private EventoBean eventoBean;
     private Locatario locatarioSelecionado;
     private List<Locatario> listaLocatario;
     private List<Locatario> listaLocatarioFiltrado;
@@ -106,6 +108,7 @@ public class LocatarioBean {
         lDAO.remover(locatarioSelecionado);
         limpar();
         setListaLocatario(null);
+//        eventoBean.setListaEvento(null);
         utilidade.mensagemAviso(3);
     }
 
