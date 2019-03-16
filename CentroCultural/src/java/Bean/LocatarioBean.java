@@ -260,5 +260,5 @@ public class LocatarioBean {
         }
         return listaLocatarioJuridico.size();
     }//retorna a quantidade de locatarios do tipo PJ
-
+    
 }//class
