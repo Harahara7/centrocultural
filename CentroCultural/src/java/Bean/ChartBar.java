@@ -19,11 +19,10 @@ public class ChartBar implements Serializable {
     private HorizontalBarChartModel horizontalBarModel;
     private LocatarioBean lDAO = new LocatarioBean();
     private EventoBean eDAO = new EventoBean();
-    
+
     Long qtdAgendado = eDAO.quantidadeStatusAgendado();
     Long qtdConfirmado = eDAO.quantidadeStatusConfirmado();
     Long qtdCancelado = eDAO.quantidadeStatusCancelado();
-
 
     @PostConstruct
     public void init() {
@@ -32,8 +31,8 @@ public class ChartBar implements Serializable {
 
     public void itemSelect(ItemSelectEvent event) {
         FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Item selected",
-                "Item Index: " + event.getItemIndex() + ", DataSet Index:" 
-                //"Item Index: " + event.getItemIndex() + ", DataSet Index:" + event.getDataSetIndex()
+                "Item Index: " + event.getItemIndex() + ", DataSet Index:"
+        //"Item Index: " + event.getItemIndex() + ", DataSet Index:" + event.getDataSetIndex()
         );
 
         FacesContext.getCurrentInstance().addMessage(null, msg);
@@ -49,10 +48,6 @@ public class ChartBar implements Serializable {
 
     private BarChartModel initBarModel() {
         BarChartModel model = new BarChartModel();
-        
-        
-
-        
 
 //        ChartSeries boys = new ChartSeries();
 //        boys.setLabel("Boy");
@@ -61,7 +56,6 @@ public class ChartBar implements Serializable {
 //        boys.set("2006", 44);
 //        boys.set("2007", 150);
 //        boys.set("2008", 25);
-
         ChartSeries girls = new ChartSeries();
         girls.setLabel("Quantidade Status");
         girls.set("Agendado", qtdAgendado);
@@ -86,6 +80,7 @@ public class ChartBar implements Serializable {
 
         barModel.setTitle("Quantidade por STATUS");
         barModel.setLegendPosition("ne");
+        barModel.setAnimate(true);
 
         Axis xAxis = barModel.getAxis(AxisType.X);
         // xAxis.setLabel("Gender");
@@ -93,7 +88,7 @@ public class ChartBar implements Serializable {
         Axis yAxis = barModel.getAxis(AxisType.Y);
         //yAxis.setLabel("Births");
         yAxis.setMin(0);
-        yAxis.setMax(qtdAgendado+qtdConfirmado+qtdCancelado);
+        yAxis.setMax(qtdAgendado + qtdConfirmado + qtdCancelado);
     }
 
     private void createHorizontalBarModel() {
@@ -102,7 +97,7 @@ public class ChartBar implements Serializable {
         //pega a quantidade de físico e jurídico
         int qtdPf = lDAO.quantidadeLocatarioFisico();
         int qtdPj = lDAO.quantidadeLocatarioJuridico();
-        
+
         ChartSeries barra = new ChartSeries();
         barra.setLabel("Pessoa Física");
         barra.set("Jurídica", qtdPj);
@@ -118,7 +113,6 @@ public class ChartBar implements Serializable {
 //        girls.set("2006", 82);
 //        girls.set("2007", 35);
 //        girls.set("2008", 120);
-
         //Caracteristicas da barra
         horizontalBarModel.addSeries(barra);
         //horizontalBarModel.addSeries(girls);
@@ -132,7 +126,7 @@ public class ChartBar implements Serializable {
         Axis xAxis = horizontalBarModel.getAxis(AxisType.X);
         xAxis.setLabel("Quantidade");
         xAxis.setMin(0);
-        xAxis.setMax(qtdPf+qtdPj);//esta soma é para a tela grafica se ajustar
+        xAxis.setMax(qtdPf + qtdPj);//esta soma é para a tela grafica se ajustar
 
         Axis yAxis = horizontalBarModel.getAxis(AxisType.Y);
         yAxis.setLabel("Tipo de Pessoa");
