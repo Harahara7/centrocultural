@@ -68,24 +68,11 @@ public class ChartView implements Serializable {
     }
 
     private void createBarModels() {
-        createBarModel();
+
         createHorizontalBarModel();
     }
 
-    private void createBarModel() {
-        barModel = initBarModel();
 
-        barModel.setTitle("Status");
-        barModel.setLegendPosition("ne");
-
-        Axis xAxis = barModel.getAxis(AxisType.X);
-        // xAxis.setLabel("Gender");
-
-        Axis yAxis = barModel.getAxis(AxisType.Y);
-        //yAxis.setLabel("Births");
-        yAxis.setMin(0);
-        yAxis.setMax(200);
-    }
 
     private void createHorizontalBarModel() {
         horizontalBarModel = new HorizontalBarChartModel();
@@ -122,8 +109,9 @@ public class ChartView implements Serializable {
 
         Axis xAxis = horizontalBarModel.getAxis(AxisType.X);
         xAxis.setLabel("Quantidade");
+        xAxis.setTickInterval("1");
         xAxis.setMin(0);
-        xAxis.setMax(qtdPf+qtdPj);//esta soma é para a tela grafica se ajustar
+        xAxis.setMax(qtdPf+qtdPj+1);//esta soma é para a tela grafica se ajustar
 
         Axis yAxis = horizontalBarModel.getAxis(AxisType.Y);
         yAxis.setLabel("Tipo de Pessoa");

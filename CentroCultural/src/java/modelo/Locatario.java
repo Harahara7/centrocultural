@@ -65,7 +65,7 @@ public class Locatario implements Serializable {
     @Size(max = 60)
     @Column(name = "bairro")
     private String bairro;
-    @OneToMany(cascade = CascadeType.ALL,
+    @OneToMany(cascade = CascadeType.REMOVE,
             mappedBy = "idLocatario",
             fetch = FetchType.EAGER,
             orphanRemoval = true)

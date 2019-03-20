@@ -72,7 +72,7 @@ public class ChartBar implements Serializable {
 
     private void createBarModels() {
         createBarModel();
-        createHorizontalBarModel();
+ 
     }
 
     private void createBarModel() {
@@ -87,49 +87,9 @@ public class ChartBar implements Serializable {
 
         Axis yAxis = barModel.getAxis(AxisType.Y);
         //yAxis.setLabel("Births");
+        yAxis.setTickInterval("1");
         yAxis.setMin(0);
-        yAxis.setMax(qtdAgendado + qtdConfirmado + qtdCancelado);
-    }
-
-    private void createHorizontalBarModel() {
-        horizontalBarModel = new HorizontalBarChartModel();
-
-        //pega a quantidade de físico e jurídico
-        int qtdPf = lDAO.quantidadeLocatarioFisico();
-        int qtdPj = lDAO.quantidadeLocatarioJuridico();
-
-        ChartSeries barra = new ChartSeries();
-        barra.setLabel("Pessoa Física");
-        barra.set("Jurídica", qtdPj);
-        barra.set("Física", qtdPf);
-//        boys.set("2006", 44);
-//        boys.set("2007", 55);
-//        boys.set("2008", 25);
-
-//        ChartSeries girls = new ChartSeries();
-//        girls.setLabel("Pessoa Jurídica");
-//        girls.set("2004", 52);
-//        girls.set("2005", 60);
-//        girls.set("2006", 82);
-//        girls.set("2007", 35);
-//        girls.set("2008", 120);
-        //Caracteristicas da barra
-        horizontalBarModel.addSeries(barra);
-        //horizontalBarModel.addSeries(girls);
-
-        horizontalBarModel.setTitle("Quantidade por tipo de pessoa");
-        horizontalBarModel.setLegendPosition("e");
-        horizontalBarModel.setStacked(true);
-        horizontalBarModel.setBarPadding(0);
-        horizontalBarModel.setAnimate(true);
-
-        Axis xAxis = horizontalBarModel.getAxis(AxisType.X);
-        xAxis.setLabel("Quantidade");
-        xAxis.setMin(0);
-        xAxis.setMax(qtdPf + qtdPj);//esta soma é para a tela grafica se ajustar
-
-        Axis yAxis = horizontalBarModel.getAxis(AxisType.Y);
-        yAxis.setLabel("Tipo de Pessoa");
+        yAxis.setMax(qtdAgendado + qtdConfirmado + qtdCancelado+1);
     }
 
 }

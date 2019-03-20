@@ -4,41 +4,14 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">  
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Cadastro de Eventos</title>
     </h:head>   
     <h:body>
         <ui:composition template="paginaMestra.xhtml">
             <ui:define name="conteudo">
-                <script type="text/javascript">
-                    //Script de tradução do componente Calendar
-                    PrimeFaces.locales['pt_BR'] = {closeText: 'Fechar',
-                        prevText: 'Anterior',
-                        nextText: 'Próximo',
-                        monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-                        monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-                        dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
-                        dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],
-                        dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],
-                        weekHeader: 'Semana',
-                        weekNumberTitle: 'Sm',
-                        firstDay: 0,
-                        isRTL: false,
-                        showMonthAfterYear: false,
-                        yearSuffix: '',
-                        timeOnlyTitle: 'Só Horas',
-                        timeText: 'Horário',
-                        hourText: 'Hora',
-                        minuteText: 'Minuto',
-                        secondText: 'Segundo',
-                        currentText: 'Começo',
-                        ampm: false,
-                        month: 'Mês',
-                        week: 'Semana',
-                        day: 'Dia',
-                        allDayText: 'Todo o Dia'};
-                </script>
+            <script src="js/componenteCalendar.js"></script>
                 <h:form>
                     <p:panel header="Cadastro de Eventos">
                         <p:panelGrid columns="2">

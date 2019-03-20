@@ -75,7 +75,7 @@ public class Evento implements Serializable {
     private String preco;
     
     @JoinColumn(name = "idLocatario", referencedColumnName = "idLocatario")
-    @ManyToOne(optional = false, cascade = CascadeType.REMOVE)
+    @ManyToOne(optional = false)
     private Locatario idLocatario;
     
     public Evento() {
