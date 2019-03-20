@@ -103,6 +103,16 @@ public class EventoBean {
         setListaEvento(null);
         utilidade.mensagemAviso(-4);
     }
+    
+        public void encerrarEvento() throws ParseException {
+        EventoDAO eDAO = new EventoDAO();
+        setEvento(eventoSelecionado);
+        evento.setStatus("Encerrado");
+        eDAO.alterar(evento);
+        limpar();
+        setListaEvento(null);
+        utilidade.mensagemAviso(-5);
+    }
 
     public void removerEvento() {
         EventoDAO eDAO = new EventoDAO();

@@ -148,7 +148,7 @@ public class EventoDAO {
     public List<Evento> listarEventos() {
 
         //Query em cima dos Objetos! (Classes)
-        String queryObj = "from Evento";
+        String queryObj = "from Evento where status != \'Encerrado\' ORDER BY dataInicio DESC";
         List<Evento> listaEvento = new ArrayList<>();
         Session s = HibernateUtil.getSessionFactory().openSession();
         listaEvento = s.createQuery(queryObj).list();

@@ -122,11 +122,6 @@
                                 <p:outputLabel value="#{evento.preco}" />
                             </p:column>
                             <p:column headerText="Ações">
-                                <p:commandButton title="Remover"
-                                                 icon="ui-icon-trash"
-                                                 action="#{eventoBean.removerEvento()}"
-                                                 update="@form"
-                                                 />
                                 <p:commandButton title="Alterar"
                                                  icon="ui-icon-pencil"
                                                  action="#{eventoBean.carregarEvento()}"
@@ -140,6 +135,11 @@
                                 <p:commandButton title="Cancelar"
                                                  icon="ui-icon-cancel"
                                                  action="#{eventoBean.cancelarEvento()}"
+                                                 update="@form"
+                                                 />
+                                <p:commandButton title="Encerrar"
+                                                 icon="ui-icon-flag"
+                                                 action="#{eventoBean.encerrarEvento()}"
                                                  update="@form"
                                                  />
                             </p:column>

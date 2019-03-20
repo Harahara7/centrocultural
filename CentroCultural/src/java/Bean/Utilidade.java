@@ -72,6 +72,11 @@ public class Utilidade {
                .addMessage(null, new FacesMessage
                (FacesMessage.SEVERITY_FATAL, "Evento foi cancelado!", null));
             break;
+            case -5:
+               FacesContext.getCurrentInstance()
+               .addMessage(null, new FacesMessage
+               (FacesMessage.SEVERITY_INFO, "Evento foi encerrado!", null));
+            break;
             default: 
             break;
             
