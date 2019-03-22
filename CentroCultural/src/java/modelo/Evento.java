@@ -19,6 +19,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -42,6 +43,11 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Evento.findByNome", query = "SELECT e FROM Evento e WHERE e.nome = :nome")
     , @NamedQuery(name = "Evento.findByPreco", query = "SELECT e FROM Evento e WHERE e.preco = :preco")})
 public class Evento implements Serializable {
+
+    @Basic(optional = false)
+    @Lob
+    @Column(name = "descricao")
+    private String descricao;
 
     @Column(name = "dataInicio")
     @Temporal(TemporalType.TIMESTAMP)
@@ -186,6 +192,14 @@ public class Evento implements Serializable {
      */
     public void setDataFim(Date dataFim) {
         this.dataFim = dataFim;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     

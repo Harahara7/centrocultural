@@ -5,6 +5,7 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
     <h:head>
         <title>Cadastro de Eventos</title>
     </h:head>   
@@ -63,6 +64,8 @@
                                         />
                             <p:outputLabel value="Preço: " />
                             <p:inputText value="#{eventoBean.evento.preco}" />
+                            <p:outputLabel value="Descrição: " />
+                            <p:inputTextarea value="#{eventoBean.evento.descricao}" />
                             <p:commandButton value="Salvar Evento" 
                                              action="#{eventoBean.salvarEvento()}"
                                              update="@form"
@@ -120,6 +123,9 @@
                             </p:column>
                             <p:column filterBy="#{evento.preco}" filterMatchMode="contains" headerText="Preço">
                                 <p:outputLabel value="#{evento.preco}" />
+                            </p:column>
+                            <p:column headerText="Descrição">
+                                <p:commandButton icon="ui-icon-search" title="#{evento.descricao}" />
                             </p:column>
                             <p:column headerText="Ações">
                                 <p:commandButton title="Alterar"
