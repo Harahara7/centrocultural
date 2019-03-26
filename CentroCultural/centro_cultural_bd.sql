@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 26-Fev-2019 às 22:29
+-- Generation Time: 26-Mar-2019 às 23:05
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.1
 
@@ -49,16 +49,20 @@ CREATE TABLE `evento` (
   `dataInicio` datetime DEFAULT NULL,
   `dataFim` datetime DEFAULT NULL,
   `status` varchar(45) DEFAULT NULL,
-  `preco` varchar(200) DEFAULT NULL
+  `preco` varchar(200) DEFAULT NULL,
+  `descricao` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `evento`
 --
 
-INSERT INTO `evento` (`idEvento`, `idLocatario`, `idConvidado`, `nome`, `setor`, `dataInicio`, `dataFim`, `status`, `preco`) VALUES
-(1, 19, NULL, 'Exposição', 'Teatro Margarida Schivasappa', '2019-02-22 16:00:00', '2019-02-23 09:00:00', 'Agendado', 'Entrada Franca'),
-(2, 20, NULL, 'Distribuição de Merendas', 'Pátio da Fundação', '2019-02-25 12:00:00', '2019-02-26 19:00:00', 'Confirmado', '10,00');
+INSERT INTO `evento` (`idEvento`, `idLocatario`, `idConvidado`, `nome`, `setor`, `dataInicio`, `dataFim`, `status`, `preco`, `descricao`) VALUES
+(2, 20, NULL, 'Distribuição de Merendas', 'Pátio da Fundação', '2019-03-02 19:14:00', '2019-03-04 19:14:00', 'Encerrado', '10,00', ''),
+(29, 22, NULL, 'Gincana', 'Pátio da Fundação', '2019-03-16 09:00:00', '2019-03-16 19:00:00', 'Confirmado', 'Um quilo de alimento não perecível', '30x Objetos'),
+(30, 22, NULL, 'teste', 'Casa das Artes', '2019-03-20 17:21:00', '2019-03-20 20:21:00', 'Agendado', 'wwwwww', '1x Objeto'),
+(32, 23, NULL, 'Evento teste', 'Pátio da Fundação', '2019-03-22 18:34:00', '2019-03-23 18:34:00', 'Agendado', 'nada', '1x Datashow\r\n1x Mesa\r\n1x Extensão elétrica'),
+(33, 24, NULL, 'Distribuição de Merendas', 'Pátio da Fundação', '2019-03-24 09:30:00', '2019-03-24 12:00:00', 'Confirmado', 'Entrada Franca', 'Ação social para distribuição de lanches');
 
 -- --------------------------------------------------------
 
@@ -76,9 +80,9 @@ CREATE TABLE `fisico` (
 --
 
 INSERT INTO `fisico` (`idFisico`, `cpf`) VALUES
-(5, '33784309070'),
-(16, '49754855080'),
-(17, '01431461229');
+(17, '01431461229'),
+(18, '01431461229'),
+(19, '66322115774');
 
 -- --------------------------------------------------------
 
@@ -121,10 +125,10 @@ CREATE TABLE `locatario` (
 --
 
 INSERT INTO `locatario` (`idLocatario`, `idJuridico`, `idFisico`, `nome`, `contato`, `email`, `cep`, `logradouro`, `bairro`) VALUES
-(19, NULL, 5, 'João Maria', '(32)32323-2323', 'joaomaria@email.com', '59132-370', 'Rua da PiraÃºna', 'PajuÃ§ara'),
 (20, 3, NULL, 'yuuyuyuutyuyrurt', '(51)46641-7644', 'ewqewqq@email.com', '40230-510', 'Travessa dos Contentes', 'FederaÃ§Ã£o'),
-(21, NULL, 16, 'Carlos', '(91)98311-1111', 'carlos@gmail.com', '96410-350', 'Rua Onze', 'SÃ£o Martins'),
-(22, NULL, 17, 'Teste do Teste', '(00)00099-9999', 'teste1@email.com.br', '66093-330', 'Jardim Tapajos', 'Marco');
+(22, NULL, 17, 'Teste', '(91)98346-2716', 'teste@gmail.com', '24210-206', 'Praia SÃ£o Domingos', 'SÃ£o Domingos'),
+(23, NULL, 18, 'Teste do Teste', '(95)73985-7395', 'aaa@gmail.com', '66093-330', 'Jardim TapajÃ³s', 'Marco'),
+(24, NULL, 19, 'Locatário Teste', '(59)48317-8571', 'locatario@gmail.com', '69900-064', 'Rua Benjamin Constant', 'Centro');
 
 -- --------------------------------------------------------
 
@@ -203,13 +207,13 @@ ALTER TABLE `convidado`
 -- AUTO_INCREMENT for table `evento`
 --
 ALTER TABLE `evento`
-  MODIFY `idEvento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idEvento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `fisico`
 --
 ALTER TABLE `fisico`
-  MODIFY `idFisico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `idFisico` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `juridico`
@@ -221,7 +225,7 @@ ALTER TABLE `juridico`
 -- AUTO_INCREMENT for table `locatario`
 --
 ALTER TABLE `locatario`
-  MODIFY `idLocatario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `idLocatario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `usuario`
